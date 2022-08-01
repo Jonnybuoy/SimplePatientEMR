@@ -15,7 +15,7 @@ DECIMAL_FIELDS_KWARGS = {
 
 
 class Visit(models.Model):
-    patient_details = models.ForeignKey(
+    patient = models.ForeignKey(
         Patient, related_name='patient_visits', on_delete=models.PROTECT
     )
     visit_date = models.DateTimeField(
@@ -28,3 +28,12 @@ class Visit(models.Model):
         self.BMI = calculate_bmi(self.height, self.weight)
         
         super().save(*args, **kwargs)
+
+
+class VisitDetails(models.Model):
+    visit = models.ForeignKey(
+        Visit, on_delete=models.CASCADE
+    )
+    general_health_status = models.CharField(max_length=10)
+    health_question = models.CharField(max_length=10)
+    comments = models.CharField(max_length=255)

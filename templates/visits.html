@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>PatientEMR</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background: rgb(179, 182, 182);
+}
+
+        .form-control:focus {
+            box-shadow: none;
+            border-color: #BA68C8
+        }
+
+        .back:hover {
+            color: #682773;
+            cursor: pointer
+        }
+
+        .labels {
+            font-size: 14px;
+        }
+
+        .qstn-labels {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .add-experience:hover {
+            background: #BA68C8;
+            color: #fff;
+            cursor: pointer;
+            border: solid 1px #BA68C8
+        }
+        .btn1{
+            border: none;
+            outline: none;
+            height: 50px;
+            width: 50%;
+            background-color: blue;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .btn1:hover{
+            background: white;
+            border: 1px solid;
+            color: blue;
+        }
+        .btn2{
+            border: none;
+            outline: none;
+            height: 30px;
+            width: 50%;
+            background-color:green;
+            color: white;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .btn2:hover{
+            background: white;
+            border: 1px solid;
+            color: green;
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg flex-row navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">PatientEMR</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Login</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Register</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <section class="Form my-4 mx-5">
+                      <form method="POST", action="">
+                          {% csrf_token %}
+                          <div class="container rounded bg-white mt-5 mb-5">
+                                <!-- <div class="col-md-3 border-right">
+                                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="{{ user.profile_image.url }}"><button class="btn2 mt-3 mb-5" type="button">Add image</button></div>
+                                </div> -->
+                                <div class="col-md-5 border-right">
+                                    <div class="p-3 py-5">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h4 class="text-right">Start A Visit</h4>
+                                        </div>
+                                        <!-- <div class="row mt-3">
+                                            <div class="col-md-12"><label class="labels">Username</label><input type="text" class="form-control" placeholder="enter your username" name="username"></div>
+                                        </div> -->
+                                        <div class="row mt-3">
+                                          <div class="col-md-12"><label class="labels">Date Of Visit</label><input type="date" class="form-control" placeholder="enter date of visit" name="visit_date"></div>
+                                      </div>
+                                        <div class="row mt-3">
+                                            <div class="col-md-12"><label class="labels">Height (cm)</label><input type="text" id="height" class="form-control" placeholder="enter height in centimetre" name="height" onkeyup="autofillBMI()" onclick="getInput()"></div>
+                                        </div>
+                                        <div class="row mt-3">
+                                          <div class="col-md-12"><label class="labels">Weight (kg)</label><input type="text" id="weight" class="form-control" placeholder="enter weight in KG" name="weight" onkeyup="autofillBMI()" onclick="getInput()"></div>
+                                      </div>
+                                      <div class="row mt-3">
+                                        <div class="col-md-12"><label class="labels">BMI</label><input type="text" class="form-control" id="BMI" placeholder="0.0" name="BMI" onkeyup="autofillBMI()"></div>
+                                    </div>
+                                        <br>
+                                        <div class="mt-5 text-center"><button class="btn1 mt-3 mb-5" type="submit">Submit Visit</button></div>
+                                    </div>
+                                </div>
+                                {{ form.errors }}
+                         </div>
+                         </div>
+                         </div>
+                      </form>
+      </section>
+    
+    <script type="text/javascript" charset="utf-8">
+
+        function autofillBMI(){
+            height = document.getElementById("height").value;
+            weight = document.getElementById("weight").value;
+            document.getElementById("BMI").value = weight/(height/100);
+        }
+        function getInput(){
+          var input = document.getElementById("number").value;
+          // conversion from string to integer
+          if(isNaN(input)) return 0; // value is not a number
+          var value = parseInt(input);
+}
+    
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
