@@ -19,10 +19,7 @@ def visit_creation(request):
         BMI = request.POST['BMI']
         visit = Visit(visit_date=visit_date, height=height, weight=weight, BMI=BMI, patient=patient)
         visit.save()
-        if int(BMI) < 25:
-            return redirect('/visits/visit_details')
-        elif int(BMI) >= 25:
-            return redirect('/visits/visit_details')
+        return redirect('/visits/visit_details')
         
     else:
         return render(request, 'visits.html')
@@ -32,9 +29,9 @@ def visit_details(request):
     '''Endpoint for creating and posting patient's initial visit details'''
     if request.method == 'POST':
         visit = Visit.objects.last()
-        if int(visit.BMI) < 25:
+        if float(visit.BMI) < 25:
             render(request, 'visit_details.html')
-        elif int(visit.BMI) >= 25:
+        elif float(visit.BMI) >= 25:
             render(request, 'visit_details_B.html')
         general_health_status = request.POST['general_health_status']
         health_question = request.POST['health_question']

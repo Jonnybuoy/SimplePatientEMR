@@ -31,11 +31,12 @@ def patient_registration(request):
         return render(request, 'register.html')
 
 
-def patient_report(request):
-    '''Endpoint for displaying all the patients data'''
-    visits = Visit.objects.all()
-    context = {'visits': visits}
-    return render(request, 'patient_report.html', context)
+class PatientReportAPI(APIView):
+    def get(self, request):
+        '''Endpoint for displaying all the patients data'''
+        visits = Visit.objects.all()
+        context = {'visits': visits}
+        return render(request, 'patient_report.html', context)
 
 
 class PatientAPIView(APIView):
