@@ -115,19 +115,27 @@
               </ul>
         </div>
       </nav>
+
       <section class="Form my-4 mx-5">
             <table id="patients">
                 <tr>
                 <th>Full Names</th>
                 <th>DOB</th>
-                <th>BMI</th>
+                <th>Status</th>
                 </tr>
                 {% for visit in visits %}
                 <tr>
                 <td>{{ visit.patient.names }}</td>
-                <td>{{ visit.patient.dob }}</td>
-                <td>{{ visit.BMI }}</td>
+                <td>{{ visit.patient.dob|date:"jS F Y" }}</td>
+                
+                {% if visit.BMI < 18.5%}
+                <td>Underweight</td>
+                {% elif visit.BMI > 18.5 and visit.BMI < 25 %}
+                <td>Normal</td>
+                {% elif visit.BMI >= 25 %}
+                <td>Overweight</td>
                 </tr>
+                {% endif %}
                 {% endfor %}
             </table>
       </section>

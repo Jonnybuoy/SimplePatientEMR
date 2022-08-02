@@ -10,6 +10,7 @@ from visits.models import Visit
 
 
 def patient_registration(request):
+    '''Endpoint for creating and posting patient's registration details'''
     if request.method == 'POST':
         first_name = request.POST.get('first_name')
         last_name = request.POST.get('last_name')
@@ -31,12 +32,14 @@ def patient_registration(request):
 
 
 def patient_report(request):
+    '''Endpoint for displaying all the patients data'''
     visits = Visit.objects.all()
     context = {'visits': visits}
     return render(request, 'patient_report.html', context)
 
 
 class PatientAPIView(APIView):
+    '''Patient API endpoint'''
     def get(self, request):
         patients = Patient.objects.all()
         serializer = PatientSerializer(patients, many=True)

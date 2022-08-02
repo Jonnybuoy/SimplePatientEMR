@@ -15,6 +15,7 @@ DECIMAL_FIELDS_KWARGS = {
 
 
 class Visit(models.Model):
+    '''This model holds a patient's initial visit details'''
     patient = models.ForeignKey(
         Patient, related_name='patient_visits', on_delete=models.PROTECT
     )
@@ -31,6 +32,7 @@ class Visit(models.Model):
 
 
 class VisitDetails(models.Model):
+    '''This model holds a patient's vitals per visit'''
     visit = models.ForeignKey(
         Visit, on_delete=models.CASCADE
     )

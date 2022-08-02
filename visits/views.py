@@ -10,6 +10,7 @@ from patients.models import Patient
 
 
 def visit_creation(request):
+    '''Endpoint for creating and posting patient's initial visit'''
     if request.method == 'POST':
         patient = Patient.objects.last()
         visit_date = request.POST['visit_date']
@@ -28,6 +29,7 @@ def visit_creation(request):
 
 
 def visit_details(request):
+    '''Endpoint for creating and posting patient's initial visit details'''
     if request.method == 'POST':
         visit = Visit.objects.last()
         if int(visit.BMI) < 25:
@@ -46,6 +48,7 @@ def visit_details(request):
 
 
 class VisitAPIView(APIView):
+    '''Visit API endpoint'''
     def get(self, request):
         visits = Visit.objects.all()
         serializer = VisitSerializer(visits, many=True)

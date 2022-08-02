@@ -9,6 +9,7 @@ GENDER_CHOICES = (
 
 
 class Patient(models.Model):
+    '''This model holds the patients' data at point of entry.'''
     first_name = models.CharField(max_length=255, null=True)
     last_name = models.CharField(max_length=255, null=True)
     dob = models.DateTimeField(null=True, blank=True)
