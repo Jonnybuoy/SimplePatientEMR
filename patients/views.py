@@ -25,7 +25,6 @@ def patient_registration(request):
         patient = Patient(first_name=first_name, last_name=last_name, dob=dob, gender=gender)
         patient.save()
         return redirect('/visits/visit_creation')
-        return render(request, 'visits.html', context)
         
     else:
         return render(request, 'register.html')

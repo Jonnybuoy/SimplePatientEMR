@@ -27,12 +27,8 @@ def visit_creation(request):
 
 def visit_details(request):
     '''Endpoint for creating and posting patient's initial visit details'''
+    visit = Visit.objects.last()
     if request.method == 'POST':
-        visit = Visit.objects.last()
-        if float(visit.BMI) < 25:
-            render(request, 'visit_details.html')
-        elif float(visit.BMI) >= 25:
-            render(request, 'visit_details_B.html')
         general_health_status = request.POST['general_health_status']
         health_question = request.POST['health_question']
         comments = request.POST['comments']
@@ -41,7 +37,10 @@ def visit_details(request):
         return redirect('/patients/patient_report')
         
     else:
-        return render(request, 'visit_details.html')
+        if float(visit.BMI) < 25:
+            return render(request, 'visit_details.html')
+        elif float(visit.BMI) >= 25:
+            return render(request, 'visit_details_B.html')
 
 
 class VisitAPIView(APIView):
