@@ -80,11 +80,11 @@ WSGI_APPLICATION = 'patient_emr.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'patient_emr',
-        'USER': 'emruser',
-        'PASSWORD': 'password',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': os.getenv('PG_NAME', 'patient_emr'),
+        'USER': os.getenv('PG_USER', 'emruser'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
+        'HOST': os.getenv('PG_HOST', 'localhost'),
+        'PORT': os.getenv('PG_PORT', ''),
     }
 }
 

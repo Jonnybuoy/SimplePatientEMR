@@ -1,0 +1,10 @@
+{
+    "builds": [{
+        "src": "patient_emr/wsgi.py",
+        "use": "@vercel/python"
+    }],
+    "routes": [{
+        "src": "/(.*)",
+        "dest": "patient_emr/wsgi.py"
+    }]
+}
