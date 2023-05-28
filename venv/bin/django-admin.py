@@ -1,4 +1,4 @@
-#!/home/kaberere/simple-patient-emr/venv/bin/python3
+#!/home/kaberere/MY_PROJECTS/simple-patient-emr/venv/bin/python3
 # When the django-admin.py deprecation ends, remove this script.
 import warnings
 

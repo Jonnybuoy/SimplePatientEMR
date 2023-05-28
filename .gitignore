@@ -1,5 +1,5 @@
 # Ignore venv
 venv/*
-.env.dev
+.env
 
 __pycache__/

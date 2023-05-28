@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/kaberere/simple-patient-emr/venv"
+VIRTUAL_ENV="/home/kaberere/MY_PROJECTS/simple-patient-emr/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
