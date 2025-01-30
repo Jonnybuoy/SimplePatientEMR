@@ -83,12 +83,12 @@ WSGI_APPLICATION = 'patient_emr.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.environ.get('PG_NAME'),
         'USER': os.environ.get('PG_USER'),
         'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
         'HOST': os.environ.get('PG_HOST'),
-        'PORT': os.environ.get('PG_PORT'),
+        'PORT': os.environ.get('PG_PORT', '5432'),
     }
 }
 
